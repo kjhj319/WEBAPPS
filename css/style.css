@@ -226,3 +226,29 @@ a
         height: 40px;
         margin: 0px 0px 5px 0px;
         }
+        
+  ul {
+		list-style: none;
+	}
+
+	.menu > li {
+	}
+	.menu #profile {
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+	}
+	.menu #profile:hover,
+	.menu #profile:focus {
+		outline: 0;
+		text-decoration: underline;
+	}
+
+	.submenu {
+		display: none;
+		padding: 10px;
+	}
+	.menu #profile:focus + .submenu,
+	.submenu:hover {
+		display: block;
+	}
