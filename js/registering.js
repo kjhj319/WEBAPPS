@@ -3,7 +3,6 @@ function redirect()
   document.getElementById("SignupButton").onclick = function() 
   {
   	addUserToList();	
-  	//window.location.href = "homepage.html";
   };
 }
 
@@ -11,14 +10,37 @@ function addUserToList()
 {
   var emailofUser = document.getElementById('email').value;
   var pwdOfUser = document.getElementById('pwd').value;
+  var cnfrm = document.getElementById("cnfrmPwd").value;
   var nickNmeOfUser = document.getElementById('nickName').value;
+  var emptyCount = 0;
 
-    
+
   console.log(emailofUser);
+  if (emailofUser == "")
+  {
+  	alert("Email cannot be empty");
+  	emptyCount++;
+  }
 
-  setCookie(emailofUser, emailofUser, 2);
-  var y = readCookie(emailofUser);
-  console.log(y);
+  if (pwdOfUser == "")
+  {
+  	alert("Password cannot be empty");
+  	emptyCount++;
+  }
+
+  if (pwdOfUser != cnfrm)
+  {
+  	alert("Password does not match");
+  	emptyCount++;
+  }
+
+  if (emptyCount == 0)
+  {
+    setCookie(emailofUser, emailofUser, 2);
+    var y = readCookie(emailofUser);
+    console.log(y);
+    window.location.href = "homepage.html";
+  }
 }
 
 function setCookie(cName, cValue, days)
@@ -43,7 +65,7 @@ function readCookie(name)
 	
 	while (c.charAt(0)==' ') 
 	{
-	  c = c.substring(1,c.length);
+	  c = c.substring(1, c.length);
 	}
 
 	if (c.indexOf(nameEQ) == 0) 
@@ -58,21 +80,15 @@ function readCookie(name)
 function checkCookie() 
 {
   var toBeChecked = document.getElementById('email').value;
-  var username = getCookie(toBeChecked);
-  console.log("ye")
+  var username = readCookie(toBeChecked);
   
-  if (username != "") 
+  if (username != null) 
   {
-    alert("Welcome again " + username);
+    window.location.href="main.html"
   }
   
   else
   {
-    username = prompt("Please enter your name:", "");
-    
-    if (username != "" && username != null) 
-    {
-      setCookie("username", username, 365);
-    }
+    alert("Username or password is invalid");
   }
 }
