@@ -6,6 +6,8 @@
     </title>
 
     <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="js/registering.js">
+    </script>
   </head>
 
   <body>
@@ -14,13 +16,13 @@
 
   	  <form id="loginForm">
   	    Email: <br>
-  	    <input type="text" name="email"><br><br>
+  	    <input type="text" id="email"><br><br>
   	    Password: <br>
   	    <input type="password" name="pwd"><br><br>  	    
   	  </form>
       <br><br><br>
 
-      <button id="loginButton" value="Login" onclick = "window.location='main.html'">Login</input>
+      <button id="loginButton" value="Login" onclick= "checkCookie()">Login</input>
       <button id="loginButton" value="Register" onclick = "window.location='signup.html'">Register</input>
   	</div>
   </body>
